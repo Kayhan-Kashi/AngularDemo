@@ -1,3 +1,21 @@
 <div (click)="onDivClicked()">
     <button (click)="onSave($event)">Save</button>
 </div>
+
+<input (keyup.enter)="onKeyUp($event)" />
+
+<!-- <input #email (keyup.enter)="onKeyUpVer1(email.value)" /> -->
+
+<input [value]="email" (keyup.enter)="onkeyUpVer2()" />
+ 
+<!-- <input [value]="email" (keyup.enter)="email = $event.target.value; onkeyUpVer2()" /> -->
+<input [(ngModel)]="email" (keyup.enter)="onkeyUpVer2()"  />
+
+<br/>
+{{course.title | uppercase  | lowercase }} <br/>
+{{course.students | number }} <br/>
+{{course.rating | number: '1.2-2' }} <br/>
+{{course.price | currency : 'AUD': true:'3.2-2'}} <br/>
+{{course.releaseDate | date:'shortDate'}} <br/>
+
+{{ text | summary : 10}}

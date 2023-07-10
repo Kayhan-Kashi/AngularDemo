@@ -10,6 +10,8 @@ import { CoursesService } from './services/courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './services/authors.service';
 import { CoursesComponent } from './courses/courses.component';
+import { FormsModule } from '@angular/forms';
+import { SummaryPipe } from './pipes/summary.pipe';
 
 
 const appRoutes: Routes = [
@@ -22,10 +24,12 @@ const appRoutes: Routes = [
     AppComponent,
     CourseComponent,
     AuthorsComponent,
-    CoursesComponent
+    CoursesComponent,
+    SummaryPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     CoursesService,
