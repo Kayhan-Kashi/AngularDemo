@@ -1,0 +1,8 @@
+<h2>{{ authors.length }} Authors </h2>
+<img  src= {{imageUrl}}  />
+ <img [src]="imageUrl">
+<ul>
+    <li *ngFor="let author of authors">
+        {{ author }}
+    </li>
+</ul>
