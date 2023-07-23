@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { TitleCaseComponent } from './title-case/title-case.component';
+import { PanelComponent } from './panel/panel.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     CoursesComponent,
     SummaryPipe,
     FavoriteComponent,
-    TitleCaseComponent
+    TitleCaseComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
