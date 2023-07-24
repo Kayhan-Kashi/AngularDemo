@@ -9,9 +9,14 @@
 <title-case></title-case> -->
 
 <bootstrap-panel>
-    <div class="heading">Heading</div>
+    <ng-container class="heading">Heading</ng-container>
     <div class="body">
         <h2>Body</h2>
         <p>Some content here...</p>
     </div>
 </bootstrap-panel>
+
+<app-like 
+    [likesCount]="tweet.likesCount"
+    [isActive] = "tweet.isLiked">
+</app-like>
