@@ -14,7 +14,4 @@ export class LikeComponent {
     this.isActive = !this.isActive;
 
   }
-
-
-
 }
