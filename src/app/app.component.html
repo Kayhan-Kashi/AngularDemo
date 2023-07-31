@@ -1,12 +1,12 @@
-<!-- <style>
+<style>
     
 </style>
 
 <app-course></app-course>
 <app-authors></app-authors>
 <app-courses></app-courses>
-<favorite  [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>
-<title-case></title-case> -->
+<!-- <favorite  [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite> -->
+<title-case></title-case>
 
 <bootstrap-panel>
     <ng-container class="heading">Heading</ng-container>
@@ -90,3 +90,26 @@
     </li>
 </ul>
 
+<button
+    [ngStyle]="{
+        'backgroundColor': canSave? 'blue': 'gray',
+        'color': canSave ? 'white': 'black',
+        'fontWeight': canSave ? 'bold': 'normal'
+    }"
+>
+    Save
+</button>
+
+<div>
+    <span>{{task.assignee.name}}</span>
+    <span *ngIf="task.assignee">{{task.assignee.name}}</span>
+    <!-- <span>{{task.assignee?.name}}</span> -->
+</div>
+
+<br>
+<input type="text"  [appInputFormat] = "'uppercase'" />
+
+
+<zippy title="Shipping Details">
+    Shipping Details Content 
+</zippy>

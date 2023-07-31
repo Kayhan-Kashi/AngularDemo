@@ -1,6 +1,8 @@
 <span class="glyphicon"
- [class.glyphicon-star]="isSelected"
- [class.glyphicon-star-empty]="!isSelected"
+ [ngClass]="{
+    'glyphicon-star': isSelected,
+    'glyphicon-star-empty': !isSelected
+ }"
  [style.fontSize]= "'30px'" 
  (click)="onClick()"
  ></span>

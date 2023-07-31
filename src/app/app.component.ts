@@ -10,6 +10,13 @@ import { FavoriteChangedEventArgs } from './favorite/favorite.component';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent {
+  task={
+    title:'Review applications',
+    assignee: {
+      name: 'John Smith' 
+    }
+  }
+  canSave = true;
   viewMode = 'map';
   // courses = [1, 2];
   courses = [
