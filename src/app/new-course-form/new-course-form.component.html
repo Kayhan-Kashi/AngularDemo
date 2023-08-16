@@ -15,7 +15,7 @@
             <div *ngIf="name.errors?.required">
                 Name is required
             </div>
-            <div *ngIf="name.errors?.minlength">
+            <div *ngIf="name.errors.minlength">
                 Name field should be at least {{ name.errors?.minlength.requiredLength }} characters
             </div>
     </div>

@@ -10,7 +10,7 @@ import { CoursesService } from './services/courses.service';
 import { AuthorsComponent } from './authors/authors.component';
 import { AuthorsService } from './services/authors.service';
 import { CoursesComponent } from './courses/courses.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { TitleCaseComponent } from './title-case/title-case.component';
@@ -20,6 +20,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 
 const appRoutes: Routes = [
@@ -33,6 +34,7 @@ const appRoutes: Routes = [
     CourseComponent,
     AuthorsComponent,
     CoursesComponent,
+    SignupFormComponent,
     SummaryPipe,
     FavoriteComponent,
     TitleCaseComponent,
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [
     CoursesService,
