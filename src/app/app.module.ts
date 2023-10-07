@@ -21,6 +21,8 @@ import { ZippyComponent } from './zippy/zippy.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { NewCourseFormComponent } from './new-course-form/new-course-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { NewCourseUdemyCourseComponent } from './new-course-udemy-course/new-course-udemy-course.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 const appRoutes: Routes = [
@@ -43,7 +45,9 @@ const appRoutes: Routes = [
     InputFormatDirective,
     ZippyComponent,
     ContactFormComponent,
-    NewCourseFormComponent
+    NewCourseFormComponent,
+    NewCourseUdemyCourseComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
