@@ -9,19 +9,32 @@ import { PasswordValidators } from './password.validators';
 })
 export class ChangePasswordComponent {
   form: FormGroup;
-  // formAlt = new FormGroup({
+  // form = new FormGroup({
   //   oldPassword : new FormControl('',[Validators.required], [PasswordValidators.validOldPassword]),
   //   newPassword : new FormControl('',[Validators.required]),
   //   confirmPassword : new FormControl('',[Validators.required])
-  // }, { validators: PasswordValidators.validOldPassword });
+  // }, { validators: PasswordValidators.passwordsShouldMatch });
+
+  // constructor(fb: FormBuilder) {
+  //   this.form = fb.group({
+  //     oldPassword: ['', Validators.required, PasswordValidators.validOldPassword],
+  //     newPassword: ['', Validators.required],
+  //     confirmPassword: ['', Validators.required]
+  //   }, {
+  //     validators: PasswordValidators.passwordsShouldMatch} );
+  // }
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
-      oldPassword: ['', Validators.required, PasswordValidators.validOldPassword],
+      oldPassword: ['', 
+        Validators.required, 
+        PasswordValidators.validOldPassword
+      ],
       newPassword: ['', Validators.required],
       confirmPassword: ['', Validators.required]
     }, {
-      validators: PasswordValidators.passwordsShouldMatch} );
+      validator: PasswordValidators.passwordsShouldMatch
+    });
   }
 
 

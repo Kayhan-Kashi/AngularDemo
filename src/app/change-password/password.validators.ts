@@ -9,14 +9,25 @@ export class PasswordValidators {
         });
     }
 
+    // static passwordsShouldMatch(control: AbstractControl) {
+    //     console.log('checking password matching')
+    //     let newPassword = control.get('newPassword');
+    //     let confirmPassword = control.get('confirmPassword');
+
+    //     if(newPassword.value !== confirmPassword.value) 
+    //         return { passwordsShouldMatch : true};
+
+    //     return null;
+    // }
+
     static passwordsShouldMatch(control: AbstractControl) {
         console.log('checking password matching')
         let newPassword = control.get('newPassword');
         let confirmPassword = control.get('confirmPassword');
 
-        if(newPassword.value !== confirmPassword.value) 
-            return { passwordsShouldMatch : true};
-
+        if (newPassword.value !== confirmPassword.value)
+            return { passwordsShouldMatch: true };
+        
         return null;
     }
 }
