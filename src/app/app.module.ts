@@ -23,6 +23,8 @@ import { NewCourseFormComponent } from './new-course-form/new-course-form.compon
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { NewCourseUdemyCourseComponent } from './new-course-udemy-course/new-course-udemy-course.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SampleFormComponent } from './sample-form/sample-form.component';
+import { ChangeLoggerDirective } from './change-logger.directive';
 
 
 const appRoutes: Routes = [
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     ContactFormComponent,
     NewCourseFormComponent,
     NewCourseUdemyCourseComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    SampleFormComponent,
+    ChangeLoggerDirective
   ],
   imports: [
     BrowserModule,

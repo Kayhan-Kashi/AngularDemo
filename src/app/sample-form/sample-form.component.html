@@ -1,0 +1,51 @@
+<form [formGroup]="form">
+    <div class="col-md-4" style="border: solid 1px rgb(218, 171, 240);padding:1%;">
+        <div class="form-group col-md-12" >
+            <div class="form-group col-md-8" >
+                <label for="name">Full Name</label>
+                <input change-logger type="text" name="name" class="form-control" formControlName="fullName" [(ngModel)]="sampleName" />
+                <div class="alert alert-danger" *ngIf="fullName.touched && username.invalid">
+                    <div *ngIf="fullName.errors?.required">Please enter fullname</div>           
+                </div>
+            </div>
+        </div> 
+        <div class="form-group col-md-12" >
+            <div class="form-group col-md-8" >
+                <label for="username">Username</label>
+                <input change-logger  type="text" name="username" class="form-control" formControlName="username" [(ngModel)]="usernameText" />
+                <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                    <div *ngIf="username.errors?.required">Please enter username</div>
+                    <div *ngIf="username.errors?.cannotContainSpace">Username cannot contain spaces</div>
+                    <div *ngIf="username.errors?.isUsernameTaken">Username is taken</div>
+                </div>
+            </div>
+        </div>       
+        <div class="form-group col-md-12" >
+            <div class="form-group col-md-8" >
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" formControlName="password" />
+            </div>
+        </div>
+        <div class="form-group col-md-12" >
+            <div class="form-group col-md-8" >
+                <label for="confirmPassword">Confirm password</label>
+                <input type="password" name="confirmPassword" class="form-control" formControlName="confirmPassword" />
+            </div>
+            <div class="col-md-12 alert alert-danger" *ngIf=" confirmPassword.valid && form.invalid && form.errors?.passwordIsnotConfirmed">
+                passwords don't match
+            </div>
+        </div>
+        <div class="form-group col-md-12" >
+            <div class="form-group col-md-8" >
+                <label for="confirmPassword">Level</label>
+                <select class="form-control">
+                    <option *ngFor="let level of levels">{{level.no}}</option>
+                </select>
+            </div>       
+        </div>
+        
+        <div class="form-group col-md-6" >
+            <button type="button" class="btn btn-primary" style="margin-left:8%;" (click)="onClick()">Register</button>
+        </div>
+    </div>  
+</form>

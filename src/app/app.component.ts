@@ -39,6 +39,10 @@ export class AppComponent {
     isLiked: true
   }
 
+  onShow(text: string) {
+    alert(text);
+  }
+
   onFavoriteChanged(eventArgs: FavoriteChangedEventArgs) {
     console.log("Favorite changed", eventArgs.newValue)
   }
