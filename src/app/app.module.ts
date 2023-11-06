@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 import { Routes } from '@angular/router';
@@ -25,6 +27,10 @@ import { NewCourseUdemyCourseComponent } from './new-course-udemy-course/new-cou
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { SampleFormComponent } from './sample-form/sample-form.component';
 import { ChangeLoggerDirective } from './change-logger.directive';
+import { PostsComponent } from './posts/posts.component';
+import { PostService } from './services/post.service';
+import { AppErrorHandler } from './common/app-error-handler';
+
 
 
 const appRoutes: Routes = [
@@ -51,16 +57,20 @@ const appRoutes: Routes = [
     NewCourseUdemyCourseComponent,
     ChangePasswordComponent,
     SampleFormComponent,
-    ChangeLoggerDirective
+    ChangeLoggerDirective,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule ,
+    HttpClientModule
   ],
   providers: [
     CoursesService,
-    AuthorsService
+    AuthorsService,
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler}
   ],
   bootstrap: [AppComponent]
 })
