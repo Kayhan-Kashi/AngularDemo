@@ -18,24 +18,25 @@ export class PostsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.service.getPosts().subscribe(response => {
-      this.posts = response;
-      console.log(response);
-    });
+    this.service.getAll()
+    .subscribe(posts => this.posts = posts
+    );
   }
 
-
-
     createPost(input: HTMLInputElement) {
-      let post = { title: input.value }
-      this.service.createPost(JSON.stringify(post))
+      let post = { title: input.value };
+      this.posts.splice(0, 0, post);  // we add on top before calling server
+
+      input.value = '';  // notice two way binding
+
+      this.service.create(JSON.stringify(post))
         .subscribe({
-          next: (response) => {
-            post['id'] = response['id'];
-            this.posts.splice(0, 0, post);
-            console.log(response);
+          next: (newPost) => {
+            post['id'] = newPost['id'];
           },
           error: (err : AppError) => {
+            this.posts.splice(0, 1);  // roll back changes at the top of error callback function
+            
             if(err instanceof BadInput) {
               // this.form.setErrors(err.originalError);
             }
@@ -47,19 +48,23 @@ export class PostsComponent implements OnInit {
     }
 
     updatePost(post) {
-      this.service.updatePost(post)
-        .subscribe(response => {
-          console.log(response);
+      this.service.update(post)
+        .subscribe(updatedPost => {
+          console.log(updatedPost);
         });
     }
 
     deletePost(post) {
-      this.service.deletePost(-200).subscribe({
-        next: response => {
-          let index = (this.posts as any[]).indexOf(post);
-          this.posts.splice(index, 1);
+      let index = (this.posts as any[]).indexOf(post);
+      this.posts.splice(index, 1);
+
+      this.service.delete(-200).subscribe({
+        next: () => {
+     
         },
         error: (error : AppError) => {
+          this.posts.splice(index, 0, post);
+
           if (error instanceof NotFoundError) {
             alert("This post has already been deleted");
           }
