@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of, throwError, map } from 'rxjs';
+import { Observable, catchError, of, throwError, map, retry } from 'rxjs';
 import { AppError } from '../common/app-error';
 import { NotFoundError } from '../common/not-found-error';
 import { BadInput } from '../common/bad-input';
@@ -31,7 +31,8 @@ export class DataService {
     return this.http.patch(this.url + '/' + resource.id, JSON.stringify({ isRead: true }))
       .pipe(
         map(response => response),
-        catchError(this.handleError)
+        catchError(this.handleError),
+        retry(3)
         );
    }
 
