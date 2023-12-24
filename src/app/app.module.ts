@@ -38,6 +38,12 @@ import { HomeComponent } from './home/home.component';
 import { GithubProfileComponent } from './github-profile/github-profile.component';
 import { NotFoundError } from 'rxjs';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ArchiveComponent } from './route-exercise/archive/archive.component';
+import { AdminComponent } from './AuthCourse/Components/admin/admin.component';
+import { LoginComponent } from './AuthCourse/Components/login/login.component';
+import { NoAccessComponent } from './AuthCourse/Components/no-access/no-access.component';
+import { OrderService } from './AuthCourse/services/Order/order.service';
+import { AuthService } from './AuthCourse/services/Auth/auth.service';
 
 
 
@@ -72,6 +78,10 @@ const appRoutes: Routes = [
     HomeComponent,
     GithubProfileComponent,
     NotFoundComponent,
+    ArchiveComponent,
+    AdminComponent,
+    LoginComponent,
+    NoAccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,34 +89,58 @@ const appRoutes: Routes = [
     ReactiveFormsModule ,
     HttpClientModule,
     RouterModule.forRoot([
-      { 
-        path: '',
-        component: HomeComponent 
-      },
-      { 
-        path: 'followers/:id/:username',
-        component: GithubProfileComponent
-      },
-      { 
-        path: 'followers', 
-        component: GithubFollowersComponent 
-      },
-      { 
-        path: 'posts',
-        component: PostsComponent 
-      },
-      { 
-        path: '**',
-        component: NotFoundComponent 
-      }
-    ])
+      { path: '', component: HomeComponent },
+      { path: 'admin', component: AdminComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'no-access', component: NoAccessComponent }
+    ]),
+    // RouterModule.forRoot([
+    //   { 
+    //     path: '',
+    //     component: HomeComponent 
+    //   },
+    //   { 
+    //     path: 'archive/:year/:month',
+    //     component: ArchiveComponent
+    //   },
+    //   {
+    //     path: '**',
+    //     component: NotFoundComponent
+    //   }   
+    // ])
+    // RouterModule.forRoot([
+    //   { 
+    //     path: '',
+    //     component: HomeComponent 
+    //   },
+    //   { 
+    //     path: 'followers/:id/:username',
+    //     component: GithubProfileComponent
+    //   },
+    //   { 
+    //     path: 'followers', 
+    //     component: GithubFollowersComponent 
+    //   },
+    //   { 
+    //     path: 'posts',
+    //     component: PostsComponent 
+    //   },
+    //   { 
+    //     path: '**',
+    //     component: NotFoundComponent 
+    //   }
+    // ])
   ],
+  // providers: [
+  //   CoursesService,
+  //   AuthorsService,
+  //   PostService,
+  //   GithubFollowersService,
+  //   { provide: ErrorHandler, useClass: AppErrorHandler},
+  // ],
   providers: [
-    CoursesService,
-    AuthorsService,
-    PostService,
-    GithubFollowersService,
-    { provide: ErrorHandler, useClass: AppErrorHandler},
+    OrderService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
